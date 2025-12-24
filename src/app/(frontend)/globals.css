@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Pure black and white - nothing else */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    --radius: 0;
+  }
+
+  [data-theme='dark'] {
+    /* Inverted - white on black */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 0% 100%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+  }
+
+  /* Light theme explicit */
+  [data-theme='light'] {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --border: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    font-feature-settings: normal;
+    letter-spacing: -0.01em;
+  }
+
+  /* Reset headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: unset;
+    font-weight: unset;
+    font-family: inherit;
+  }
+
+  /* Links - simple underline */
+  a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+}
+
+/* Theme transition */
+html {
+  opacity: 0;
+}
+
+html[data-theme='dark'],
+html[data-theme='light'] {
+  opacity: initial;
+}
+
+/* Personality: Subtle rotations for messy feel */
+@layer utilities {
+  .rotate-slight-left {
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .rotate-slight-right {
+    transform: rotate(1deg);
+    display: inline-block;
+  }
+
+  .rotate-messy {
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  /* ASCII-style underline */
+  .underline-tilde::after {
+    content: '~~~~~~~~~~~~';
+    display: block;
+    letter-spacing: -2px;
+    opacity: 0.6;
+  }
+
+  /* Divider */
+  .divider-ascii {
+    border: none;
+    text-align: left;
+    overflow: visible;
+  }
+
+  .divider-ascii::before {
+    content: '────────────────────────────────────────';
+    display: block;
+    opacity: 0.4;
+  }
+
+  /* Hover wobble */
+  .hover-wobble:hover {
+    animation: wobble 0.15s ease-in-out;
+  }
+
+  @keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+  }
+}
+
+/* Typography for prose/content */
+@layer components {
+  .prose-mono {
+    max-width: 65ch;
+    line-height: 1.7;
+  }
+
+  .prose-mono p {
+    margin-bottom: 1.5em;
+  }
+
+  .prose-mono h1 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 0.5em;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-mono h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose-mono h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-mono ul, .prose-mono ol {
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .prose-mono li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose-mono blockquote {
+    border-left: 2px solid hsl(var(--foreground));
+    padding-left: 1em;
+    margin-left: 0;
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .prose-mono code {
+    background: hsl(var(--muted));
+    padding: 0.15em 0.3em;
+    font-size: 0.9em;
+  }
+
+  .prose-mono pre {
+    background: hsl(var(--muted));
+    padding: 1em;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+  }
+
+  .prose-mono pre code {
+    background: none;
+    padding: 0;
+  }
+}
