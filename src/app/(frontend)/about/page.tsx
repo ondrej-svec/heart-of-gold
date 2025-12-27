@@ -16,7 +16,7 @@ export default function AboutPage() {
           {/* Photo - simple, no fancy styling */}
           <div className="w-32 h-32 shrink-0 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image
-              src="/media/IMG-001-author-portrait-v6-900x900.jpg"
+              src="/ondrej-profile.png"
               alt="Ondrej Svec"
               width={128}
               height={128}
