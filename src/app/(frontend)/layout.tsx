@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { JetBrains_Mono } from 'next/font/google'
 import React from 'react'
+import { Analytics } from '@vercel/analytics/next'
 
 const mono = JetBrains_Mono({
   subsets: ['latin'],
@@ -44,6 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <main className="flex-1">{children}</main>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )
