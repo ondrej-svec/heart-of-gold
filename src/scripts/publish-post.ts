@@ -10,7 +10,12 @@
 
 import * as fs from 'fs'
 import * as path from 'path'
-import { markdownToLexical, extractTitle, extractDescription, generateSlug } from '../utilities/markdownToLexical'
+import {
+  markdownToLexical,
+  extractTitle,
+  extractDescription,
+  generateSlug,
+} from '../utilities/markdownToLexical'
 
 // --- Config ---
 
@@ -29,7 +34,9 @@ function loadSecrets(): PayloadSecrets {
   if (!fs.existsSync(secretsPath)) {
     console.error(`Error: Payload secrets not found at ${secretsPath}`)
     console.error('Create it with:')
-    console.error(`  echo '{"api_key": "your-key", "api_url": "https://ondrejsvec.com/api"}' > ${secretsPath}`)
+    console.error(
+      `  echo '{"api_key": "your-key", "api_url": "https://ondrejsvec.com/api"}' > ${secretsPath}`,
+    )
     process.exit(1)
   }
   return JSON.parse(fs.readFileSync(secretsPath, 'utf-8'))
@@ -138,9 +145,10 @@ async function uploadMedia(
 
 function createAudioBlockNode(mp3MediaId: string): Record<string, any> {
   // Payload Lexical block node shape.
-  // Verified against Payload CMS v3 REST API response format.
+  // Verified against actual API response from the-return-and-the-road-ahead post.
   return {
     type: 'block',
+    format: '',
     version: 2,
     fields: {
       id: crypto.randomUUID(),
@@ -216,7 +224,9 @@ async function main() {
     } catch (err) {
       console.error('  MP3 upload failed:', err)
       if (heroMediaId) {
-        console.error(`  Note: Hero image was uploaded (media ID: ${heroMediaId}). Manual cleanup may be needed.`)
+        console.error(
+          `  Note: Hero image was uploaded (media ID: ${heroMediaId}). Manual cleanup may be needed.`,
+        )
       }
       console.error('  Aborting to prevent orphaned state.')
       process.exit(1)
@@ -236,7 +246,11 @@ async function main() {
 
   // Check for existing post by slug
   console.log('\nChecking for existing post...')
-  const existingResult = await apiJson(apiUrl, apiKey, `/posts?where[slug][equals]=${encodeURIComponent(slug)}&limit=1`)
+  const existingResult = await apiJson(
+    apiUrl,
+    apiKey,
+    `/posts?where[slug][equals]=${encodeURIComponent(slug)}&limit=1`,
+  )
   const existingPost = existingResult.docs?.[0]
 
   // Build post data
