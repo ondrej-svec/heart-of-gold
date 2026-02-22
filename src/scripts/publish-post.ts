@@ -230,7 +230,7 @@ async function main() {
   // Insert AudioBlock at the top of content if MP3 was uploaded
   if (mp3MediaId) {
     const audioBlockNode = createAudioBlockNode(mp3MediaId)
-    lexicalContent.root.children.unshift(audioBlockNode)
+    ;(lexicalContent.root.children as any[]).unshift(audioBlockNode)
     console.log('  Inserted AudioBlock at top of content.')
   }
 
