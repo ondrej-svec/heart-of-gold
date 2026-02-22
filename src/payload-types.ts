@@ -1716,6 +1716,17 @@ export interface TaskSchedulePublish {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AudioBlock".
+ */
+export interface AudioBlock {
+  audio: number | Media;
+  title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'audioBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
