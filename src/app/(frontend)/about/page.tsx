@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const metadata: Metadata = {
   title: 'About | Ondrej Svec',
   description:
-    'ICF ACC Coach, NeuroLeadership certified, former Tech Lead. Cultivating systems that empower wholehearted living.',
+    'CTO at Aibility, ICF ACC Coach, builder. 14+ years across software architecture, technical sales, and leadership. Building Aimee — an AI coach for people and organizations.',
 }
 
 export default function AboutPage() {
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-base font-semibold mb-4">the roots</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            12+ years in software architecture and IT leadership taught me technical mastery. but
+            14+ years in software architecture, technical sales, and IT leadership taught me technical mastery. but
             burnout in 2021 taught me something deeper—perfectionism isn&apos;t a superpower,
             it&apos;s a 20-ton shield preventing flight.
           </p>
@@ -74,6 +74,19 @@ export default function AboutPage() {
           <p className="text-sm leading-relaxed text-muted-foreground mt-3">
             i&apos;m an introvert energized by small groups who actually care. those coaching
             circles where we support each other through life&apos;s storms.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-base font-semibold mb-4">the clearing</h2>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            then aibility happened. i came to build aimee — an ai coach that walks with
+            people and organizations as they figure out ai for themselves. it wasn&apos;t
+            the logical next step. probably none of my steps were.
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground mt-3">
+            but building something where the code and the coaching and the questions all
+            live together — that feels right. for now, that&apos;s enough.
           </p>
         </section>
 
