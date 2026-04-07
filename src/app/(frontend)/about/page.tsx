@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const metadata: Metadata = {
   title: 'About | Ondrej Svec',
   description:
-    'CTO at Aibility, ICF ACC Coach, builder. 14+ years across software architecture, technical sales, and leadership. Building Aimee — an AI coach for people and organizations.',
+    'ICF ACC Coach, builder, systems thinker. 14+ years across software architecture, technical sales, and leadership. Exploring what happens to teams when AI makes working alone easier than ever.',
 }
 
 export default function AboutPage() {
@@ -80,26 +80,35 @@ export default function AboutPage() {
         <section>
           <h2 className="text-base font-semibold mb-4">the clearing</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            then aibility happened. i came to build aimee — an ai coach that walks with
-            people and organizations as they figure out ai for themselves. it wasn&apos;t
-            the logical next step. probably none of my steps were.
+            then aibility happened. i built aimee — an ai coach that walked with
+            people and organizations as they figured out ai for themselves. small team,
+            impossible speed, everything ai promised. it wasn&apos;t the logical next step.
+            probably none of my steps were.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground mt-3">
-            but building something where the code and the coaching and the questions all
-            live together — that feels right. for now, that&apos;s enough.
+            the speed was real. so were the lessons. i watched the connective tissue
+            dissolve — not because anyone chose to cut it, but because the work stopped
+            requiring it. the conversations, the check-ins, the human parts. the things
+            that felt like overhead turned out to be everything.
           </p>
         </section>
 
         <section>
           <h2 className="text-base font-semibold mb-4 rotate-slight-right">the forest</h2>
           <p className="text-sm leading-relaxed">
-            my vision: cultivating systems that empower us to live wholeheartedly, to nurture
-            ourselves so we can authentically support others.
+            that experience sharpened a question i can&apos;t shake: how do we keep teams
+            human when the work no longer requires them to be?
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground mt-3">
-            i&apos;m looking for fellow travelers—to walk alongside, share a segment of the path, or
-            simply exchange insights. the road leads over steep mountains. i love mountains. i need
-            challenges.
+            i work at the intersection of coaching, technology, and the stubborn belief
+            that humans need humans. ai makes working alone easier than ever. it won&apos;t
+            genuinely disagree with you. it won&apos;t bring a perspective shaped by a life
+            you haven&apos;t lived. that&apos;s the gap i care about.
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground mt-3">
+            i&apos;m looking for fellow travelers — to walk alongside, share a segment of
+            the path, or simply sit with the questions. the road leads over steep mountains.
+            i love mountains. i need challenges.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground mt-3">
             i may not know all the details. that&apos;s the beautiful mystery.
