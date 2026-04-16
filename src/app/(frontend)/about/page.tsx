@@ -80,7 +80,7 @@ export default function AboutPage() {
         <section>
           <h2 className="text-base font-semibold mb-4">the clearing</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            then aibility happened. i built aimee — an ai coach that walked with
+            then aibility happened. we built aimee — an ai coach that walked with
             people and organizations as they figured out ai for themselves. small team,
             impossible speed, everything ai promised. it wasn&apos;t the logical next step.
             probably none of my steps were.
