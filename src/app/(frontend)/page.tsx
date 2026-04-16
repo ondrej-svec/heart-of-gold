@@ -18,12 +18,12 @@ export default async function HomePage() {
         <p className="text-xl text-muted-foreground underline-tilde">~~~~~~~~~~~~</p>
 
         <div className="mt-8 text-sm leading-relaxed space-y-4 text-muted-foreground">
-          <p>icf acc coach, former tech lead, perpetual learner.</p>
+          <p>coach, technologist, cyclist.</p>
           <p>
-            i write about wholehearted living, neuroscience-informed coaching, and the courage to
-            embrace the undefined.
+            i explore what changes about us when AI enters the room —
+            the teams, the connections, the human parts.
           </p>
-          <p>i build software, explore the world, and document the journey.</p>
+          <p>i write, i build, i wander.</p>
         </div>
 
         <nav className="mt-8 flex gap-6 text-sm">
