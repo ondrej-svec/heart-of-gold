@@ -18,7 +18,7 @@ export async function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-sm text-muted-foreground">
           <div className="flex flex-col gap-1">
             <span>ondrej švec</span>
-            <span className="text-xs opacity-60">builder · coach · cyclist</span>
+            <span className="text-xs opacity-60">coach · technologist · cyclist</span>
           </div>
           <div className="flex items-center gap-6">
             <ThemeSelector />

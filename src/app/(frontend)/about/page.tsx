@@ -27,7 +27,7 @@ export default function AboutPage() {
 
           <div>
             <h1 className="text-2xl font-normal mb-2 rotate-slight-left">about</h1>
-            <p className="text-muted-foreground text-sm">prague · icf acc coach · builder</p>
+            <p className="text-muted-foreground text-sm">coach · technologist · cyclist</p>
           </div>
         </div>
 
