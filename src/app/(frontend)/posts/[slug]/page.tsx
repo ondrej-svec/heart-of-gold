@@ -1,77 +1,56 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import React from 'react'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
-
-import type { Post } from '@/payload-types'
-
+import { getPostBySlug, getAllSlugs, getRelatedPosts } from '@/utilities/posts'
 import { PostHero } from '@/heros/PostHero'
-import { generateMeta } from '@/utilities/generateMeta'
+import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { getMDXComponents } from '@/mdx-components'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { getServerSideURL } from '@/utilities/getURL'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const posts = await payload.find({
-    collection: 'posts',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = posts.docs.map(({ slug }) => {
-    return { slug }
-  })
-
-  return params
+  return getAllSlugs().map((slug) => ({ slug }))
 }
 
 type Args = {
-  params: Promise<{
-    slug?: string
-  }>
+  params: Promise<{ slug?: string }>
 }
 
-export default async function Post({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
+export default async function PostPage({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
-  const url = '/posts/' + slug
-  const post = await queryPostBySlug({ slug })
+  const post = getPostBySlug(slug)
 
-  if (!post) return <PayloadRedirects url={url} />
+  if (!post) return notFound()
+
+  const components = getMDXComponents({})
+  const related = post.relatedPosts.length > 0 ? getRelatedPosts(post.relatedPosts) : []
 
   return (
     <article className="pb-16">
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
-
-      {draft && <LivePreviewListener />}
-
       <PostHero post={post} />
 
-      {/* Post content */}
       <div className="max-w-[65ch] mx-auto px-6">
         <div className="prose-mono">
-          <RichText data={post.content} enableGutter={false} />
+          <MDXRemote
+            source={post.content}
+            components={components}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+              },
+            }}
+          />
         </div>
 
-        {/* Related posts */}
-        {post.relatedPosts && post.relatedPosts.length > 0 && (
+        {related.length > 0 && (
           <div className="mt-16 pt-8 border-t border-foreground/10">
-            <RelatedPosts
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-            />
+            <RelatedPosts docs={related} />
           </div>
         )}
       </div>
@@ -81,29 +60,23 @@ export default async function Post({ params: paramsPromise }: Args) {
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  const post = await queryPostBySlug({ slug })
+  const post = getPostBySlug(slug)
 
-  return generateMeta({ doc: post })
+  if (!post) return {}
+
+  const serverURL = getServerSideURL()
+  const metaTitle = post.meta?.title || `${post.title} | Heart of Gold`
+  const metaDescription = post.meta?.description || ''
+  const ogImage = post.meta?.image || post.heroImage || `${serverURL}/website-template-OG.webp`
+
+  return {
+    title: metaTitle,
+    description: metaDescription,
+    openGraph: mergeOpenGraph({
+      title: metaTitle,
+      description: metaDescription,
+      url: `/posts/${post.slug}`,
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    }),
+  }
 }
-
-const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
-  const { isEnabled: draft } = await draftMode()
-
-  const payload = await getPayload({ config: configPromise })
-
-  const result = await payload.find({
-    collection: 'posts',
-    draft,
-    depth: 2,
-    limit: 1,
-    overrideAccess: draft,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
-
-  return result.docs?.[0] || null
-})
