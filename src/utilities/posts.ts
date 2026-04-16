@@ -9,7 +9,18 @@ const postSchema = z.object({
   title: z.string(),
   slug: z.string(),
   blogType: z.enum(['writing', 'wandering']),
-  publishedAt: z.coerce.string(),
+  publishedAt: z
+    .union([z.string(), z.date()])
+    .transform((v) => {
+      if (v instanceof Date) {
+        // Preserve local date in YYYY-MM-DD format (no TZ drift)
+        const yyyy = v.getFullYear()
+        const mm = String(v.getMonth() + 1).padStart(2, '0')
+        const dd = String(v.getDate()).padStart(2, '0')
+        return `${yyyy}-${mm}-${dd}`
+      }
+      return v
+    }),
   draft: z.boolean().default(false),
   heroImage: z.string().optional(),
   meta: z

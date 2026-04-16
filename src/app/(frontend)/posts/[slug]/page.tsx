@@ -29,11 +29,46 @@ export default async function PostPage({ params: paramsPromise }: Args) {
   const components = getMDXComponents({})
   const related = post.relatedPosts.length > 0 ? getRelatedPosts(post.relatedPosts) : []
 
+  const serverURL = getServerSideURL()
+  const rawImage = post.meta?.image || post.heroImage
+  const absoluteImage = rawImage
+    ? rawImage.startsWith('http')
+      ? rawImage
+      : `${serverURL}${rawImage}`
+    : undefined
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.meta?.description,
+    datePublished: post.publishedAt,
+    author: post.authors.map((a) => ({ '@type': 'Person', name: a.name })),
+    ...(absoluteImage ? { image: absoluteImage } : {}),
+    url: `${serverURL}/posts/${post.slug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${serverURL}/posts/${post.slug}`,
+    },
+  }
+
   return (
     <article className="pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageClient />
 
       <PostHero post={post} />
+
+      <link
+        rel="alternate"
+        type="text/markdown"
+        href={`${serverURL}/posts/${post.slug}/md`}
+        title={`${post.title} (Markdown)`}
+      />
+
 
       <div className="max-w-[65ch] mx-auto px-6">
         <div className="prose-mono">
