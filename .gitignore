@@ -1,22 +1,17 @@
 build
-dist / media
+dist
 node_modules
 .DS_Store
 .env
+.env.local
 .next
 .vercel
 
-# Payload default media upload directory
-public/media/
-
+# Generated sitemap files (from next-sitemap postbuild)
 public/robots.txt
 public/sitemap*.xml
 
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
 
-# Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
 *.swp
