@@ -6,26 +6,16 @@ import type { Post } from '@/utilities/posts'
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
-  const { categories, authors, publishedAt, title } = post
+  const { blogType, authors, publishedAt, title } = post
 
   const authorNames = authors.map((a) => a.name).filter(Boolean)
   const hasAuthors = authorNames.length > 0
 
   return (
     <div className="max-w-[65ch] mx-auto px-6 pt-12 pb-8">
-      {categories.length > 0 && (
-        <div className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
-          {categories.map((category, index) => {
-            const isLast = index === categories.length - 1
-            return (
-              <React.Fragment key={index}>
-                {category}
-                {!isLast && ' · '}
-              </React.Fragment>
-            )
-          })}
-        </div>
-      )}
+      <div className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
+        {blogType}
+      </div>
 
       <h1 className="text-2xl md:text-3xl font-normal mb-6 leading-tight rotate-slight-left">
         {title}
