@@ -47,6 +47,17 @@
     --code-bg: rgba(87, 82, 121, 0.06);
     --code-border: rgba(87, 82, 121, 0.14);
     --shadow-soft: 0 18px 40px rgba(87, 82, 121, 0.10);
+
+    /* Rosé Pine syntax — Dawn */
+    --syn-plain: #575279;
+    --syn-comment: #9893a5;
+    --syn-keyword: #286983;
+    --syn-string: #d7827e;
+    --syn-number: #b4637a;
+    --syn-function: #56949f;
+    --syn-punct: #797593;
+    --syn-property: #ea9d34;
+    --syn-tag: #286983;
   }
 
   [data-theme='dark'] {
@@ -89,6 +100,17 @@
     --code-bg: rgba(224, 222, 244, 0.06);
     --code-border: rgba(224, 222, 244, 0.12);
     --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.40);
+
+    /* Rosé Pine syntax — Moon */
+    --syn-plain: #e0def4;
+    --syn-comment: #6e6a86;
+    --syn-keyword: #3e8fb0;
+    --syn-string: #ea9a97;
+    --syn-number: #eb6f92;
+    --syn-function: #9ccfd8;
+    --syn-punct: #908caa;
+    --syn-property: #f6c177;
+    --syn-tag: #3e8fb0;
   }
 
   /* Light theme explicit (mirrors :root, kept for InitTheme contract) */
