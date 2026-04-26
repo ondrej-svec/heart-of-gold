@@ -91,6 +91,18 @@ const config = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+        error: {
+          DEFAULT: 'hsl(var(--error) / <alpha-value>)',
+          foreground: 'hsl(var(--error-foreground))',
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success) / <alpha-value>)',
+          foreground: 'hsl(var(--success-foreground))',
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning) / <alpha-value>)',
+          foreground: 'hsl(var(--warning-foreground))',
+        },
       },
       fontFamily: {
         mono: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'monospace'],

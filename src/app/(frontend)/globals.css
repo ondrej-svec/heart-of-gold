@@ -4,74 +4,98 @@
 
 @layer base {
   :root {
-    /* Pure black and white - nothing else */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    /* Rosé Pine Dawn — surface #faf4ed, text-primary #575279 */
+    --background: 32 57% 96%;
+    --foreground: 248 19% 40%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 32 57% 96%;
+    --card-foreground: 248 19% 40%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 32 57% 96%;
+    --popover-foreground: 248 19% 40%;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 248 19% 40%;
+    --primary-foreground: 32 57% 96%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 28 40% 92%;
+    --secondary-foreground: 248 19% 40%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 28 40% 92%;
+    --muted-foreground: 248 12% 52%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 28 40% 92%;
+    --accent-foreground: 248 19% 40%;
 
-    --destructive: 0 0% 0%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 343 35% 55%;
+    --destructive-foreground: 32 57% 96%;
 
-    --border: 0 0% 0%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 0%;
+    /* Banner accents — Rosé Pine love / foam / gold */
+    --error: 343 35% 55%;
+    --error-foreground: 32 57% 96%;
+    --success: 189 30% 48%;
+    --success-foreground: 32 57% 96%;
+    --warning: 35 81% 56%;
+    --warning-foreground: 248 19% 40%;
+
+    --border: 15 14% 89%;
+    --input: 340 8% 84%;
+    --ring: 248 19% 40%;
 
     --radius: 0;
+
+    /* Specialty tokens consumed via raw var() — not part of HSL contract */
+    --code-bg: rgba(87, 82, 121, 0.06);
+    --code-border: rgba(87, 82, 121, 0.14);
+    --shadow-soft: 0 18px 40px rgba(87, 82, 121, 0.10);
   }
 
   [data-theme='dark'] {
-    /* Inverted - white on black */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Rosé Pine Moon — surface #232136, text-primary #e0def4 */
+    --background: 246 24% 17%;
+    --foreground: 245 50% 91%;
 
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --card: 246 24% 17%;
+    --card-foreground: 245 50% 91%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 246 24% 17%;
+    --popover-foreground: 245 50% 91%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 245 50% 91%;
+    --primary-foreground: 246 24% 17%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 248 24% 20%;
+    --secondary-foreground: 245 50% 91%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 248 24% 20%;
+    --muted-foreground: 248 15% 61%;
 
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 248 24% 20%;
+    --accent-foreground: 245 50% 91%;
 
-    --destructive: 0 0% 100%;
-    --destructive-foreground: 0 0% 0%;
+    --destructive: 343 76% 68%;
+    --destructive-foreground: 246 24% 17%;
 
-    --border: 0 0% 100%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 100%;
+    --error: 343 76% 68%;
+    --error-foreground: 246 24% 17%;
+    --success: 189 43% 73%;
+    --success-foreground: 246 24% 17%;
+    --warning: 35 88% 72%;
+    --warning-foreground: 246 24% 17%;
+
+    --border: 246 16% 26%;
+    --input: 246 16% 26%;
+    --ring: 245 50% 91%;
+
+    --code-bg: rgba(224, 222, 244, 0.06);
+    --code-border: rgba(224, 222, 244, 0.12);
+    --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.40);
   }
 
-  /* Light theme explicit */
+  /* Light theme explicit (mirrors :root, kept for InitTheme contract) */
   [data-theme='light'] {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-    --border: 0 0% 0%;
+    --background: 32 57% 96%;
+    --foreground: 248 19% 40%;
+    --border: 15 14% 89%;
   }
 }
 
