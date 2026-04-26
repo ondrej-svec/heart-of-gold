@@ -153,6 +153,108 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
+/* Motion vocabulary — shared with cc-lab. Additive; never replaces personality classes. */
+@keyframes landing-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@layer utilities {
+  .landing-rise {
+    animation: landing-rise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--landing-rise-delay, 0ms);
+  }
+
+  .landing-fade-up {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition:
+      opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .landing-fade-up.landing-fade-up-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .motion-card {
+    transform: translateZ(0);
+    transition:
+      transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .motion-card:hover {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  .motion-link {
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .motion-link:hover {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  .motion-button {
+    transform: translateZ(0);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      color 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .motion-button:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Reduced motion — disables both new motion classes AND the existing wobble */
+@media (prefers-reduced-motion: reduce) {
+  .motion-card,
+  .motion-link,
+  .motion-button {
+    transition-duration: 0ms !important;
+  }
+
+  .motion-card:hover,
+  .motion-link:hover,
+  .motion-button:hover {
+    transform: none !important;
+  }
+
+  .landing-rise {
+    animation: none !important;
+  }
+
+  .landing-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hover-wobble:hover {
+    animation: none !important;
+  }
+}
+
 /* Personality: Subtle rotations for messy feel */
 @layer utilities {
   .rotate-slight-left {

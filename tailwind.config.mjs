@@ -25,6 +25,11 @@ const config = {
     'underline-tilde',
     'divider-ascii',
     'hover-wobble',
+    'motion-card',
+    'motion-link',
+    'motion-button',
+    'landing-rise',
+    'landing-fade-up',
   ],
   theme: {
     container: {
