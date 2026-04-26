@@ -25,6 +25,11 @@ const config = {
     'underline-tilde',
     'divider-ascii',
     'hover-wobble',
+    'motion-card',
+    'motion-link',
+    'motion-button',
+    'landing-rise',
+    'landing-fade-up',
   ],
   theme: {
     container: {
@@ -91,11 +96,24 @@ const config = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+        error: {
+          DEFAULT: 'hsl(var(--error) / <alpha-value>)',
+          foreground: 'hsl(var(--error-foreground))',
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success) / <alpha-value>)',
+          foreground: 'hsl(var(--success-foreground))',
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning) / <alpha-value>)',
+          foreground: 'hsl(var(--warning-foreground))',
+        },
       },
       fontFamily: {
         mono: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'monospace'],
-        sans: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'monospace'],
-        serif: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-body)', 'Manrope', 'Segoe UI', 'sans-serif'],
+        serif: ['var(--font-body)', 'Manrope', 'Segoe UI', 'sans-serif'],
+        display: ['var(--font-display)', 'Space Grotesk', 'Avenir Next', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -121,26 +139,26 @@ const config = {
             '--tw-prose-bold': 'hsl(var(--foreground))',
             '--tw-prose-code': 'hsl(var(--foreground))',
             '--tw-prose-quotes': 'hsl(var(--foreground))',
-            fontFamily: 'var(--font-mono), ui-monospace, monospace',
+            fontFamily: 'var(--font-body), Manrope, "Segoe UI", sans-serif',
             fontSize: '1rem',
             lineHeight: '1.7',
             maxWidth: '65ch',
             h1: {
+              fontFamily: 'var(--font-display), "Space Grotesk", "Avenir Next", sans-serif',
               fontWeight: '400',
               fontSize: '1.75rem',
               marginBottom: '0.5em',
-              fontFamily: 'inherit',
             },
             h2: {
+              fontFamily: 'var(--font-display), "Space Grotesk", "Avenir Next", sans-serif',
               fontWeight: '600',
               fontSize: '1.25rem',
               marginTop: '2em',
-              fontFamily: 'inherit',
             },
             h3: {
+              fontFamily: 'var(--font-display), "Space Grotesk", "Avenir Next", sans-serif',
               fontWeight: '600',
               fontSize: '1rem',
-              fontFamily: 'inherit',
             },
             a: {
               textDecoration: 'underline',
@@ -157,10 +175,10 @@ const config = {
               opacity: '0.8',
             },
             code: {
+              fontFamily: 'var(--font-mono), "JetBrains Mono", ui-monospace, monospace',
               backgroundColor: 'hsl(var(--muted))',
               padding: '0.15em 0.3em',
               fontWeight: '400',
-              fontFamily: 'inherit',
             },
             'code::before': {
               content: '""',
@@ -169,8 +187,8 @@ const config = {
               content: '""',
             },
             pre: {
+              fontFamily: 'var(--font-mono), "JetBrains Mono", ui-monospace, monospace',
               backgroundColor: 'hsl(var(--muted))',
-              fontFamily: 'inherit',
             },
           },
         },

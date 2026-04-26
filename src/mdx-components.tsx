@@ -50,6 +50,9 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
     AudioBlock,
     Banner,
+    a: ({ className, ...props }: React.ComponentPropsWithoutRef<'a'>) => (
+      <a className={cn('motion-link inline-block', className)} {...props} />
+    ),
     // Keep existing code block rendering via prism
     pre: ({ children, ...props }: React.ComponentPropsWithoutRef<'pre'>) => {
       // If the child is a <code> element with a language class, use prism

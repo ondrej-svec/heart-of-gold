@@ -36,7 +36,7 @@ const ARTIFACTS: Artifact[] = [
 export default function MakingPage() {
   return (
     <div className="max-w-[65ch] mx-auto px-6 py-12">
-      <header className="mb-12">
+      <header className="mb-12 landing-rise">
         <h1 className="text-2xl font-normal mb-4 rotate-slight-left">making</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
           three open tools i&apos;m making. small, in progress, shared as i go.
@@ -50,7 +50,7 @@ export default function MakingPage() {
         {ARTIFACTS.map((artifact) => (
           <article
             key={artifact.name}
-            className="group py-4 border-b border-foreground/10 last:border-b-0"
+            className="motion-card group py-4 border-b border-foreground/10 last:border-b-0"
           >
             <a
               href={artifact.href}
