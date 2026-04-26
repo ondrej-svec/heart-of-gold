@@ -81,7 +81,7 @@
   }
 
   html {
-    font-family: var(--font-mono), ui-monospace, monospace;
+    font-family: var(--font-body), Manrope, 'Segoe UI', sans-serif;
   }
 
   body {
@@ -90,11 +90,15 @@
     letter-spacing: -0.01em;
   }
 
-  /* Reset headings */
+  /* Reset headings — components apply explicit sizes/weights */
   h1, h2, h3, h4, h5, h6 {
     font-size: unset;
     font-weight: unset;
-    font-family: inherit;
+    font-family: var(--font-display), 'Space Grotesk', 'Avenir Next', sans-serif;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
   }
 
   /* Links - simple underline */
@@ -175,11 +179,12 @@ html[data-theme='light'] {
   }
 }
 
-/* Typography for prose/content */
+/* Typography for prose/content — body in Manrope, code in mono */
 @layer components {
   .prose-mono {
     max-width: 65ch;
     line-height: 1.7;
+    font-family: var(--font-body), Manrope, 'Segoe UI', sans-serif;
   }
 
   .prose-mono p {
@@ -187,6 +192,7 @@ html[data-theme='light'] {
   }
 
   .prose-mono h1 {
+    font-family: var(--font-display), 'Space Grotesk', 'Avenir Next', sans-serif;
     font-size: 1.75rem;
     font-weight: 400;
     margin-bottom: 0.5em;
@@ -194,6 +200,7 @@ html[data-theme='light'] {
   }
 
   .prose-mono h2 {
+    font-family: var(--font-display), 'Space Grotesk', 'Avenir Next', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     margin-top: 2em;
@@ -201,6 +208,7 @@ html[data-theme='light'] {
   }
 
   .prose-mono h3 {
+    font-family: var(--font-display), 'Space Grotesk', 'Avenir Next', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     margin-top: 1.5em;
@@ -231,12 +239,14 @@ html[data-theme='light'] {
   }
 
   .prose-mono code {
+    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
     background: hsl(var(--muted));
     padding: 0.15em 0.3em;
     font-size: 0.9em;
   }
 
   .prose-mono pre {
+    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
     background: hsl(var(--muted));
     padding: 1em;
     overflow-x: auto;
