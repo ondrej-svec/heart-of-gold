@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Making | Ondrej Svec',
   description:
-    "Open tools and frameworks I'm making — heart-of-gold-toolkit and harness-lab.",
+    "Open tools and frameworks I'm making — heart-of-gold-toolkit, harness-lab, and claude-code-lab.",
 }
 
 type Artifact = {
@@ -25,6 +25,12 @@ const ARTIFACTS: Artifact[] = [
     description:
       "a framework for running harness engineering hackathons. the overlooked craft of what's around the ai: skills, context, agents, evaluation.",
   },
+  {
+    name: 'claude-code-lab',
+    href: 'https://github.com/ondrej-svec/claude-code-lab',
+    description:
+      'a hands-on guide to agentic coding with claude code. nine chapters, copyable prompts, sample projects you can run through the full loop. bilingual — english and czech.',
+  },
 ]
 
 export default function MakingPage() {
@@ -33,7 +39,7 @@ export default function MakingPage() {
       <header className="mb-12">
         <h1 className="text-2xl font-normal mb-4 rotate-slight-left">making</h1>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          two open tools i&apos;m making. small, in progress, shared as i go.
+          three open tools i&apos;m making. small, in progress, shared as i go.
         </p>
         <div className="mt-4 text-muted-foreground opacity-40 text-xs">
           ────────────────────────────────────────
