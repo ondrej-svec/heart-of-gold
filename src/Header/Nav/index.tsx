@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: 'writing', href: '/writing' },
   { label: 'wandering', href: '/wandering' },
   { label: 'making', href: '/making' },
+  { label: 'working', href: '/working' },
   { label: 'about', href: '/about' },
 ]
 
