@@ -6,7 +6,9 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'ICF ACC Coach, software architect, and perpetual learner.',
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/og?profile=1&subtitle=${encodeURIComponent('coach · technologist · cyclist')}`,
+      width: 1200,
+      height: 630,
     },
   ],
   siteName: 'Heart of Gold',

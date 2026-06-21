@@ -102,7 +102,15 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const serverURL = getServerSideURL()
   const metaTitle = post.meta?.title || `${post.title} | Heart of Gold`
   const metaDescription = post.meta?.description || ''
-  const ogImage = post.meta?.image || post.heroImage || `${serverURL}/website-template-OG.webp`
+
+  // A real photo (meta.image or heroImage) wins; otherwise generate a branded
+  // text card from the post title. Always resolve to an absolute URL.
+  const rawImage = post.meta?.image || post.heroImage
+  const ogImage = rawImage
+    ? rawImage.startsWith('http')
+      ? rawImage
+      : `${serverURL}${rawImage}`
+    : `${serverURL}/og?title=${encodeURIComponent(post.title)}`
 
   return {
     title: metaTitle,
@@ -111,7 +119,13 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
       title: metaTitle,
       description: metaDescription,
       url: `/posts/${post.slug}`,
-      images: ogImage ? [{ url: ogImage }] : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     }),
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
+      images: [ogImage],
+    },
   }
 }
