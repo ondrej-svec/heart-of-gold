@@ -17,6 +17,9 @@ export async function GET() {
   lines.push('')
   lines.push('Full markdown of any post is available by appending `/md` to the post URL.')
   lines.push(`See [${serverURL}/llms-full.txt](${serverURL}/llms-full.txt) for all post content in one file.`)
+  lines.push(
+    `New posts are published to a full-content RSS feed at [${serverURL}/feed.xml](${serverURL}/feed.xml) — poll it to track new writing (each item carries the complete post in \`content:encoded\`).`,
+  )
   lines.push('')
 
   lines.push('## Writing')

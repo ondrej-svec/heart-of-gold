@@ -33,6 +33,10 @@ export async function Footer() {
                   {label}
                 </Link>
               ))}
+              {/* Plain anchor: /feed.xml is an XML route handler, not a page. */}
+              <a href="/feed.xml" className="hover:text-foreground transition-colors">
+                rss
+              </a>
             </nav>
           </div>
         </div>
