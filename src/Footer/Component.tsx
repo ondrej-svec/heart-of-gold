@@ -6,6 +6,7 @@ import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 const navItems = [
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/ondrejsvec/' },
   { label: 'GitHub', url: 'https://github.com/ondrej-svec' },
+  { label: 'privacy', url: '/privacy' },
 ]
 
 export async function Footer() {
