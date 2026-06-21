@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm'
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from '@/utilities/posts'
 import { PostHero } from '@/heros/PostHero'
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { Newsletter } from '@/components/Newsletter'
 import { getMDXComponents } from '@/mdx-components'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -82,6 +83,8 @@ export default async function PostPage({ params: paramsPromise }: Args) {
             }}
           />
         </div>
+
+        <Newsletter className="mt-16" />
 
         {related.length > 0 && (
           <div className="mt-16 pt-8 border-t border-foreground/10">
